@@ -27,6 +27,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 
   const ToolBarStyles = {
     display: 'flex',
+    backgroundColor: '#050505',
     [theme.breakpoints.up('md')]: {
       marginLeft: '120px',
       width: `calc(100% - 120px)`,
@@ -57,8 +58,8 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           >
             <Menu />
           </IconButton>
-          <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '5px' }}>
-            <Image src={ArrowJobsLogo} height="50" width="160"/>
+          <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '10px' }}>
+            <img src={ArrowJobsLogo} style={{height: '40px'}}/>
           </Box>
           <Box sx={{ flexGrow: 0, position: 'absolute', right: 10 }}>
             <Button

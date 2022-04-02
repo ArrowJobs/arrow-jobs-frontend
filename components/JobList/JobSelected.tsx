@@ -23,7 +23,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FlagIcon from '@mui/icons-material/Flag';
 import MDEditor from 'components/PostJobForm/MDEditor';
 
-
 const JobSelected: React.FC = () => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -109,7 +108,9 @@ const JobSelected: React.FC = () => {
                 You must create an Indeed account before continuing to the company website to apply{' '}
               </Typography>
               <Divider />
-              <div dangerouslySetInnerHTML={{__html:`<p><strong>At Otto Car, we're building in-house world-leading fleet management software. We are looking for creative engineers to join us!</strong>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `<p><strong>At Otto Car, we're building in-house world-leading fleet management software. We are looking for creative engineers to join us!</strong>
 We're looking to form our first technology team, and you'll be working at our headquarters in Hammersmith alongside people from most teams in the company including our claims, credit control, servicing and marketing teams. Our sales team is spread across several branches in London and other cities. We schedule regular learning sessions for the whole team to understand more about all aspects of the company and the industry.</p>
 <p>We are a team of 50 that have a variety of different backgrounds, and are proud to be growing. We'd love to have you join us.</p>
 <p><strong>At Otto Car, you'll get to work with a lot of exciting new technology:</strong></p>
@@ -122,7 +123,9 @@ We're looking to form our first technology team, and you'll be working at our he
 Our interview process typically consists of an initial phone screen, a take-home code task, and a half-day on-site interview. We will ask for references, and might ask to see something you've recently built (we don't mind if it's something you built personally at a hackathon, or if it is something you built as part of your current or a past job).</li>
 </ul>
 <p>At this time, we are unable to sponsor visas for anyone willing to apply for this role.</p>
-`}} />
+`,
+                }}
+              />
               <Typography variant="body1" color="text.secondary" component="div" sx={{ mt: 2 }}>
                 At Otto Car, we're building in-house world-leading fleet management software. We are looking for
                 creative engineers to join us! We're looking to form our first technology team, and you'll be working at
@@ -151,7 +154,7 @@ Our interview process typically consists of an initial phone screen, a take-home
                 sponsor visas for anyone willing to apply for this role.
               </Typography>
               <Divider />
-              <Button variant="outlined" sx={{my:3}}>
+              <Button variant="outlined" sx={{ my: 3 }}>
                 <FlagIcon />
                 Report Job
               </Button>
