@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, styled, useTheme } from '@mui/material';
+import { Box, Grid, styled, useTheme } from '@mui/material';
 import * as React from 'react';
 import JobListItems from './JobListItems';
 import JobSelected from './JobSelected';
@@ -16,7 +16,7 @@ const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
     [theme.breakpoints.up('lg')]: {
       width: 'calc(80%)',
       mx: 'auto',
-      px: 2,
+      // px: 2,
       display: 'block',
       height: 'calc(100vh - 13%)',
     },

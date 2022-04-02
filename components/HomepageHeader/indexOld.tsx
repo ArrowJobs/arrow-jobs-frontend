@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import HeaderBGLeft from 'images/headerBGLeft.svg';
-import HeaderBGRight from 'images/headerBGRight.svg';
+import HeaderBGLeft from 'public/headerBGLeft.svg';
+import HeaderBGRight from 'public/headerBGRight.svg';
 
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import SearchBox from '../SearchBox';

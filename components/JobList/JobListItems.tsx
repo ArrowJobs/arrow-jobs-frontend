@@ -5,7 +5,10 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   IconButton,
+  List,
+  ListItem,
   ListItemIcon,
   Menu,
   MenuItem,
@@ -18,7 +21,7 @@ import theme from 'styles/theme';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
-import LiveFromSpace from 'images/live-from-space.jpg';
+import LiveFromSpace from 'public/live-from-space.jpg';
 import Image from 'next/image';
 import { red } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -41,7 +44,7 @@ const JobListItems = () => {
   return (
     <>
       {listItem.map(() => (
-        <Box sx={{mb:1}}>
+        <Box sx={{ mb: 1 }}>
           <Paper elevation={0}>
             <CardHeader
               action={
@@ -81,27 +84,38 @@ const JobListItems = () => {
               <Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '70%', minWidth: '70%' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Typography component="div" variant="h5">
-                    Frontend/React vývojář
+                    Frontend Engineer
                   </Typography>
                   <Typography variant="subtitle1" color={theme.palette.secondary.main} component="div">
-                    INVIA
+                    Otto Car
                   </Typography>
                   <Typography variant="subtitle1" color={theme.palette.secondary.main} component="div">
-                    Brno
+                    London
                   </Typography>
-                  <Typography variant="subtitle2" color={theme.palette.secondary.main} component="div">
-                    Než přejdete na webové stránky společnosti, vytvořte si účet Indeed.
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" component="div" sx={{ m: 1 }}>
-                    Hledáš kreativní a technologicky atraktivní práci? Buď součástí týmu programátorů největší cestovní
-                    agentury ve střední a západní Evropě, Invia Group. Budeš se podílet na vývoji unikátních aplikací a
-                    tvořit web, který mixuje data z mnoha zdrojů a nabízí klientům největší nabídku zájezdů od většiny
-                    cestovních kanceláří z 5 evropských zemí. Staráme se také o interní CRM, ERP systém i BI reporting.{' '}
-                  </Typography>
+                  <Chip color="secondary" label="£40,000 - £60,000 a year" />
+                  {/* <Typography variant="overline" display="block" gutterBottom>
+                    CREATE AN ArrowJobs ACCOUNT BEFORE GOING TO THE COMPANY'S WEBSITE.{' '}
+                  </Typography> */}
+                  <Box sx={{ mt: 2, maxHeight: 100, minHeight: 100, overflow: 'hidden' }}>
+                    <Typography
+                      variant="body1"
+                      variantMapping={{ body1: 'p' }}
+                      color="text.secondary"
+                      component="div"
+                      noWrap={false}
+                      sx={{}}
+                    >
+                      <List>
+                        <ListItem sx={{m:0, p:0}}> Nuxt.js and the Serverless Framework for server-side setup.</ListItem>
+                        <ListItem sx={{m:0, p:0}}> React Native for cross-platform mobile apps. </ListItem>
+                        <ListItem sx={{m:0, p:0}}>You don't need to have a computer science (or similar)…</ListItem>
+                      </List>
+                    </Typography>
+                  </Box>
                 </CardContent>
               </Box>
               <Box sx={{ margin: 'auto', maxWidth: 130 }}>
-                <Image src={LiveFromSpace} alt="Company Name" />
+                <Image src={LiveFromSpace} height="200" width="200" alt="Company Name" />
               </Box>
             </Card>
           </Paper>

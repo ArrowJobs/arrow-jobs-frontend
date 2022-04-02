@@ -9,7 +9,8 @@ import { AnimateSharedLayout, motion } from 'framer-motion';
 import SearchBox from 'components/SearchBox';
 import { hideOnScrollWindow } from 'components/HomepageFilter/FilterOptionsState';
 import { useAtom } from 'jotai';
-import ArrowJobsLogo from 'images/logo.svg';
+import ArrowJobsLogo from '../../public/logoLight.png';
+import Image from 'next/image';
 
 interface LayoutProps {}
 
@@ -56,12 +57,9 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           >
             <Menu />
           </IconButton>
-          <Box sx={{opacity: 0.8}}>
-            {/* <ArrowJobsLogo width="70%" height="100%" viewBox="0 -100 1800 1000" /> */}
+          <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '5px' }}>
+            <Image src={ArrowJobsLogo} height="50" width="160"/>
           </Box>
-          {/* <Typography sx={{ fontSize: 17, fontWeight: 'medium', letterSpacing: '0.05rem' }} noWrap>
-            ArrowJobs
-          </Typography> */}
           <Box sx={{ flexGrow: 0, position: 'absolute', right: 10 }}>
             <Button
               title="Open settings"
@@ -77,19 +75,25 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           <IconButton color="secondary" edge="start" onClick={() => router.back()} size="large">
             <ArrowBackTwoToneIcon />
           </IconButton>
-          {hideOnScroll && <Box
-            sx={{
-              justifyContent: 'center',
-              ml: '20%',
-              my: 2,
-              transition: '1s',
-              display: 'flex',
-            }}
-          >
-            <Typography color='secondary' variant="h5" sx={{lineHeight: 2.3, px: 3, fontWeight: 'medium'}}>Search for the </Typography>
-            <SearchBox />
-            <Typography color='secondary' variant="h5" sx={{lineHeight: 2.3, px: 3, fontWeight: 'medium'}} >remote / local & hybrid jobs</Typography>
-          </Box>}
+          {hideOnScroll && (
+            <Box
+              sx={{
+                justifyContent: 'center',
+                ml: '20%',
+                my: 2,
+                transition: '1s',
+                display: 'flex',
+              }}
+            >
+              <Typography color="secondary" variant="h5" sx={{ lineHeight: 2.3, px: 3, fontWeight: 'medium' }}>
+                Search for the{' '}
+              </Typography>
+              <SearchBox />
+              <Typography color="secondary" variant="h5" sx={{ lineHeight: 2.3, px: 3, fontWeight: 'medium' }}>
+                remote / local & hybrid jobs
+              </Typography>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       {/* AppBar Space */}
