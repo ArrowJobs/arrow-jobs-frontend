@@ -1,4 +1,4 @@
-import { CssBaseline, AppBar, Toolbar, IconButton, Typography, styled, Box, Button } from '@mui/material';
+import { CssBaseline, AppBar, Toolbar, IconButton, Typography, styled, Box, Button, Fab } from '@mui/material';
 import * as React from 'react';
 import { Menu } from '@mui/icons-material';
 import { useTheme } from '@mui/styles';
@@ -11,7 +11,10 @@ import { hideOnScrollWindow } from 'components/HomepageFilter/FilterOptionsState
 import { useAtom } from 'jotai';
 import ArrowJobsLogo from '../../public/logoLight.png';
 import Image from 'next/image';
-
+import AddIcon from '@mui/icons-material/Add';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 interface LayoutProps {}
 
 const MainComponent = styled('main')({
@@ -43,6 +46,10 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     },
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  };
+
   return (
     <div>
       <CssBaseline />
@@ -56,10 +63,10 @@ export const Layout: React.FC<LayoutProps> = (props) => {
             size="large"
             sx={{ color: 'white' }}
           >
-            <Menu />
+            <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '10px' }}>
-            <img src={ArrowJobsLogo} style={{height: '40px'}}/>
+            <img src={ArrowJobsLogo} style={{ height: '40px' }} />
           </Box>
           <Box sx={{ flexGrow: 0, position: 'absolute', right: 10 }}>
             <Button
@@ -106,6 +113,12 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           },
         }}
       />
+      <Box>
+        <Button size="small" color="secondary" variant="contained" aria-label="go-to-top" onClick={() => scrollToTop()} style={{height: '60px', borderRadius: '50%', position: 'fixed', bottom: 20, right: 15}}>
+          <ArrowUpwardIcon fontSize="medium" />
+        </Button>
+      </Box>
+
       <nav aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <CustomDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
