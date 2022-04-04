@@ -7,17 +7,40 @@ import HomepageFilter from 'components/HomepageFilter';
 import { Box, Divider, Paper, styled, Typography, useTheme } from '@mui/material';
 import JobList from 'components/JobList';
 import { useRouter } from 'next/router';
+import { gql, useQuery } from '@apollo/client';
 
 export const handleRouteChange = (e: React.MouseEvent<HTMLElement>, route: string) => {
   e.preventDefault();
   router.push(route);
 };
+const COMPANY_NAME = gql`
+  query Companies {
+    companies {
+      id
+      companyName
+    }
+  }
+`;
+
+export function GetCompany() {
+  const { loading, error, data } = useQuery(COMPANY_NAME);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  return data.companies.map(({ id, companyName }) => (
+    <div key={id}>
+      <p>
+        {id}: {companyName}
+      </p>
+    </div>
+  ));
+}
 
 const Index: React.FC = () => {
   const router = useRouter();
   const { jid } = router.query;
   const theme = useTheme();
-  
+
   const HomepageHeaderBox = styled(Paper)({
     background: `linear-gradient(90deg, rgba(254,202,240,1) 0%, rgba(185,231,236,1) 47%, rgba(161,191,235,1) 100%)`,
   });
@@ -25,8 +48,8 @@ const Index: React.FC = () => {
   const SearchBoxWrapper = {
     [theme.breakpoints.up('sm')]: {
       mx: 2,
-    }
-  }
+    },
+  };
   return (
     <Layout>
       <div>
