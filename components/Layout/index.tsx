@@ -1,6 +1,5 @@
 import { CssBaseline, AppBar, Toolbar, IconButton, Typography, styled, Box, Button, Fab } from '@mui/material';
 import * as React from 'react';
-import { Menu } from '@mui/icons-material';
 import { useTheme } from '@mui/styles';
 import CustomDrawer from './CustomDrawer';
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
@@ -10,11 +9,9 @@ import SearchBox from 'components/SearchBox';
 import { hideOnScrollWindow } from 'components/HomepageFilter/FilterOptionsState';
 import { useAtom } from 'jotai';
 import ArrowJobsLogo from '../../public/logoLight.png';
-import Image from 'next/image';
-import AddIcon from '@mui/icons-material/Add';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+
 interface LayoutProps {}
 
 const MainComponent = styled('main')({
@@ -124,7 +121,6 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <CustomDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
       </nav>
       <MainComponent>
-        {/* <div className={classes.toolbar} /> */}
         <AnimateSharedLayout>
           <motion.div
             layout
