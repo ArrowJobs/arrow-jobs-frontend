@@ -35,7 +35,6 @@ const Index: React.FC = () => {
           <title>Arrow Jobs</title>
         </Head>
         <div>
-          <Typography variant="h2">{jid}</Typography>
           <Box sx={SearchBoxWrapper}>
             <HomepageHeaderBox elevation={1} sx={{ p: 1, shadow: 2, borderRadius: '0 0 0 0' }}>
               <HomepageHeader />
@@ -44,7 +43,7 @@ const Index: React.FC = () => {
           </Box>
 
           <HomepageFilter />
-          <JobList jid={jid} />
+          <JobList />
           <Box sx={{ height: 500 }}></Box>
         </div>
       </div>

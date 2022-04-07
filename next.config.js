@@ -16,6 +16,7 @@ module.exports = withImages({
   },
   images: {
     disableStaticImages: true,
+    domains: ['remoteok.com'],
   },
   webpack(config) {
     config.module.rules.push(
