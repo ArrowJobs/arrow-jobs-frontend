@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
 };
+const withImages = require('next-images');
 
-module.exports = {
+module.exports = withImages({
   nextConfig,
   target: process.env.NODE_ENV !== 'production' ? 'server' : 'serverless',
   dontAutoRegisterSw: true,
@@ -15,6 +16,7 @@ module.exports = {
   },
   images: {
     disableStaticImages: true,
+    domains: ['remoteok.com'],
   },
   webpack(config) {
     config.module.rules.push(
@@ -23,16 +25,16 @@ module.exports = {
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
       },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //     },
+      //   ],
+      // },
     );
 
     return config;
   },
-};
+});
