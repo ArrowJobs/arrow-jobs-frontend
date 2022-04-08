@@ -9,7 +9,6 @@ const JobList = () => {
   const theme = useTheme();
   const router = useRouter();
   const { jid } = router.query;
-  // const selectedJob = remoteOkRss.findIndex((job)=>job.guid === jid);
 
   const jobResultsStyles = {
     width: '100%',
@@ -21,7 +20,6 @@ const JobList = () => {
     [theme.breakpoints.up('lg')]: {
       width: 'calc(80%)',
       mx: 'auto',
-      // px: 2,
       display: 'block',
       height: 'calc(100vh - 13%)',
     },

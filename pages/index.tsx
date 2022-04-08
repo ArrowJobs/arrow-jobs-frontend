@@ -4,7 +4,7 @@ import { Layout } from 'components/Layout';
 import router from 'next/dist/client/router';
 import HomepageHeader from 'components/HomepageHeader';
 import HomepageFilter from 'components/HomepageFilter';
-import { Box, Divider, Paper, styled, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Paper, styled, useTheme } from '@mui/material';
 import JobList from 'components/JobList';
 import { useRouter } from 'next/router';
 
@@ -15,7 +15,6 @@ export const handleRouteChange = (e: React.MouseEvent<HTMLElement>, route: strin
 
 const Index: React.FC = () => {
   const router = useRouter();
-  const { jid } = router.query;
   const theme = useTheme();
   
   const HomepageHeaderBox = styled(Paper)({
@@ -27,6 +26,7 @@ const Index: React.FC = () => {
       mx: 2,
     }
   }
+  
   return (
     <Layout>
       <div>

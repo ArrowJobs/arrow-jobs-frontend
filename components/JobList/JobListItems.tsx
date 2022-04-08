@@ -13,7 +13,6 @@ import {
   useTheme,
 } from '@mui/material';
 import * as React from 'react';
-import LiveFromSpace from 'public/live-from-space.jpg';
 import Image from 'next/image';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ContentCut from '@mui/icons-material/ContentCut';
@@ -36,7 +35,7 @@ const JobListItems: React.FC = () => {
     <>
       {remoteOkRss.map((job) => (
         <Link href={`/?jid=${job.guid}`} scroll={false}>
-          <Box sx={{ mb: 1 }} component="div">
+          <Box sx={{ mb: 1, cursor: 'pointer' }} component="div">
             <Paper elevation={0}>
               <CardHeader
                 action={
@@ -85,25 +84,8 @@ const JobListItems: React.FC = () => {
                       {job.location}
                     </Typography>
                     <Chip color="secondary" label="£40,000 - £60,000 a year" />
-                    {/* <Typography variant="overline" display="block" gutterBottom>
-                    CREATE AN ArrowJobs ACCOUNT BEFORE GOING TO THE COMPANY'S WEBSITE.{' '}
-                  </Typography> */}
                     <Box sx={{ mt: 2, overflow: 'hidden' }}>
                       <html dangerouslySetInnerHTML={{ __html: job.description.slice(0, 150) + '...' }} />
-                      {/* <Typography
-                      variant="body1"
-                      variantMapping={{ body1: 'p' }}
-                      color="text.secondary"
-                      component="div"
-                      noWrap={false}
-                      sx={{}}
-                    >
-                      <List>
-                        <ListItem sx={{m:0, p:0}}> Nuxt.js and the Serverless Framework for server-side setup.</ListItem>
-                        <ListItem sx={{m:0, p:0}}> React Native for cross-platform mobile apps. </ListItem>
-                        <ListItem sx={{m:0, p:0}}>You don't need to have a computer science (or similar)…</ListItem>
-                      </List>
-                    </Typography> */}
                     </Box>
                   </CardContent>
                 </Box>

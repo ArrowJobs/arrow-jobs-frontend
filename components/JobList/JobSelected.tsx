@@ -20,6 +20,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ContentCut from '@mui/icons-material/ContentCut';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FlagIcon from '@mui/icons-material/Flag';
+import Link from 'next/link';
+import renderHTML from 'react-render-html';
 
 export interface ISelectedJob {
   selectedJob?: {
@@ -36,7 +38,7 @@ export interface ISelectedJob {
   jid: string | string[] | undefined;
 }
 
-const JobSelected: React.FC<ISelectedJob> = ({selectedJob, jid }) => {
+const JobSelected: React.FC<ISelectedJob> = ({ selectedJob, jid }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -54,7 +56,6 @@ const JobSelected: React.FC<ISelectedJob> = ({selectedJob, jid }) => {
           sx={{
             mb: 1,
             height: '80vh',
-            // p: 2,
             maxHeight: '80vh',
             overflow: 'auto',
             bgcolor: 'transparent',
@@ -95,10 +96,10 @@ const JobSelected: React.FC<ISelectedJob> = ({selectedJob, jid }) => {
             <MenuItem onClick={handleClose}>I am not interested</MenuItem>
             <MenuItem onClick={handleClose}>Report offer</MenuItem>
           </Menu>
-          {selectedJob && (<Card sx={{ mt: '-60px' }}>
-            <CardMedia component="img" height="194" image={selectedJob.image} alt="Paella dish" />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              
+          {selectedJob && (
+            <Card sx={{ mt: '-60px' }}>
+              <CardMedia component="img" height="194" image={selectedJob.image} alt="Paella dish" />
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Typography component="div" variant="h5">
                     {selectedJob.title}
@@ -112,22 +113,23 @@ const JobSelected: React.FC<ISelectedJob> = ({selectedJob, jid }) => {
                   <Chip color="secondary" label="£40,000 - £60,000 a year" />
 
                   <Box sx={{ display: 'flex', mt: 1, justifyContent: 'start' }}>
-                    <Button color="secondary" variant="contained">
-                      Apply on company site
-                    </Button>
+                    <Link href={selectedJob.link}>
+                      <a target="_blank" style={{textDecoration: 'none'}}>
+                        <Button color="secondary" variant="contained">
+                          Apply on company site
+                        </Button>
+                      </a>
+                    </Link>
+
                     <IconButton sx={{ mx: 2 }}>
-                      <FavoriteBorderIcon color="secondary" fontSize={'large'} />
+                      <FavoriteBorderIcon color="secondary" fontSize={'medium'} />
                     </IconButton>
                   </Box>
                   <Typography variant="overline" component="div">
                     You must create an Indeed account before continuing to the company website to apply{' '}
                   </Typography>
                   <Divider />
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: selectedJob.description,
-                    }}
-                  />
+                  <div>{renderHTML(selectedJob.description)}</div>
                   <Divider />
                   <Button variant="outlined" sx={{ my: 3 }}>
                     <FlagIcon />
@@ -135,9 +137,9 @@ const JobSelected: React.FC<ISelectedJob> = ({selectedJob, jid }) => {
                   </Button>
                   <Divider />
                 </CardContent>
-              
-            </Box>
-          </Card>)}
+              </Box>
+            </Card>
+          )}
         </Paper>
       )}
     </>

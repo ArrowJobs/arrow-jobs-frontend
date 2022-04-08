@@ -17,7 +17,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import router from 'next/dist/client/router';
 import Link from 'next/link';
 
 const drawerWidth = '250px';
@@ -109,16 +108,15 @@ const CustomDrawer: React.FC<ICustomDrawer> = (props) => {
         <Paper elevation={0} sx={{ maxWidth: drawerWidth }}>
           <FireNav component="nav" disablePadding>
             <ListItem sx={{ p: 0, backgroundColor: 'white' }}>
-              <Link href="/?jid=1123">
+              <Link href="/">
                 <ListItemButton component="a">
                   {' '}
-                  {/*  href="/"  onClick={(e: any) => handleClick(e, '/')} */}
                   <a>
                     {' '}
-                    <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
+                    <ListItemIcon sx={{ fontSize: 20 }}></ListItemIcon>
                     <ListItemText
                       sx={{ my: 0 }}
-                      primary="AJB"
+                      primary="Arrowed Jobs"
                       primaryTypographyProps={{
                         fontSize: 20,
                         fontWeight: 'medium',
