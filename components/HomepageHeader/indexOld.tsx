@@ -1,21 +1,14 @@
 import * as React from 'react';
 import {
   Box,
-  Divider,
-  IconButton,
-  InputBase,
   ListItem,
   ListItemButton,
   ListItemText,
-  Paper,
   styled,
   Typography,
 } from '@mui/material';
 import { useTheme } from '@mui/styles';
-import SearchIcon from '@mui/icons-material/Search';
-import HeaderBGLeft from 'public/headerBGLeft.svg';
 import HeaderBGRight from 'public/headerBGRight.svg';
-
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import SearchBox from '../SearchBox';
 
@@ -59,24 +52,12 @@ export const HomepageHeader: React.FC = () => {
     },
   };
 
-  // const SearchBox = styled(Paper)({
-  //   p: '5px 4px',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   width: '100%',
-  //   my: 'auto',
-  //   [theme.breakpoints.up('sm')]: {
-  //     width: 400,
-  //   },
-  // });
-  // Styles End
-
   return (
     <>
       <HomepageHeaderBox>
         <Box sx={HeaderFlexStyles}>
           <HeaderSVGSBox sx={{opacity: 0.8}}>
-            <HeaderBGLeft width="70%" height="100%" viewBox="0 -20 540 380" />
+            {/* <HeaderBGLeft width="70%" height="100%" viewBox="0 -20 540 380" /> */}
           </HeaderSVGSBox>
           {/* Search Bar */}
           <Box sx={{ mx: 3 }}>

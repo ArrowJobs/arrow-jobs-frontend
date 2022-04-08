@@ -3,12 +3,12 @@ import { styled } from '@mui/material/styles'
 import { InputLabel, TextField, OutlinedInput, InputAdornment } from '@mui/material';
 
 
-const InputTextFieldContainer = styled('div')(({ theme }) => ({
+const InputTextFieldContainer = styled('div')(() => ({
   marginBottom: '15px',
   marginTop: '20px',
   color: '#000',
 }))
-const FormControl = styled('div')(({ theme }) => ({
+const FormControl = styled('div')(() => ({
   marginTop: '40px'
 }))
 

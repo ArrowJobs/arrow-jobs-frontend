@@ -29,29 +29,29 @@ const MobileFilterItemList: React.FC<IMobileFilterItemList> = (props) => {
   };
 
   const handleFilterChange = (
-    event: React.ChangeEvent<HTMLInputElement> | React.FormEventHandler<HTMLDivElement>,
-    name: string,
+    event: React.ChangeEvent<HTMLInputElement>, value: string
   ) => {
-    const removeFilter = appliedFilters.includes(name);
+    event.preventDefault();
+    const removeFilter = appliedFilters.includes(value);
     console.log('fired');
     var newFilter;
-    if (name === 'clear') return setFilterItem({ ...filterItem, appliedFilters: [], appliedFiltersCount: 0 });
+    if (value === 'clear') return setFilterItem({ ...filterItem, appliedFilters: [], appliedFiltersCount: 0 });
     if (withOptions) {
       if (removeFilter) {
-        newFilter = appliedFilters.filter((itemName) => itemName != name);
+        newFilter = appliedFilters.filter((itemName) => itemName != value);
         setFilterItem({ ...filterItem, appliedFilters: newFilter, appliedFiltersCount: newFilter.length });
       } else {
-        newFilter = [...appliedFilters, name];
+        newFilter = [...appliedFilters, value];
         setFilterItem({
           ...filterItem,
-          appliedFilters: [...appliedFilters, name],
+          appliedFilters: [...appliedFilters, value],
           appliedFiltersCount: newFilter.length,
         });
       }
     } else {
       newFilter = [name];
-      setFilterItem({ ...filterItem, appliedFilters: [name], appliedFiltersCount: newFilter.length });
-      console.log(appliedFilters, appliedFilters.includes(name));
+      setFilterItem({ ...filterItem, appliedFilters: [value], appliedFiltersCount: newFilter.length });
+      console.log(appliedFilters, appliedFilters.includes(value));
     }
   };
 

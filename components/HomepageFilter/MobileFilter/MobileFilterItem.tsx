@@ -16,8 +16,9 @@ const MobileFilterItem: React.FC<IMobileFilterItem> = (props) => {
   const [filterOptionsAtoms] = useAtom(filterOptionsAtomsA);
   const [filterOptions] = useAtom(filterOptionsA);
 
-  const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: any) => {
-    setSelectedFilter(newValue);
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: any) => {
+    event.preventDefault();
+    setSelectedFilter(value);
   };
 
   return (
@@ -58,8 +59,8 @@ const MobileFilterItem: React.FC<IMobileFilterItem> = (props) => {
             <MobileFilterItemList
               item={options}
               selectedFilter={selectedFilter}
-              clearAll={props.clearAll}
-              setClearAll={props.setClearAll}
+              clearAll={clearAll}
+              setClearAll={setClearAll}
             />
           ))}
         </List>

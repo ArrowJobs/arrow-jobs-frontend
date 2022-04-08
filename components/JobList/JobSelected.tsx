@@ -21,7 +21,6 @@ import ContentCut from '@mui/icons-material/ContentCut';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FlagIcon from '@mui/icons-material/Flag';
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
 
 export interface ISelectedJob {
   selectedJob?: {
@@ -129,7 +128,7 @@ const JobSelected: React.FC<ISelectedJob> = ({ selectedJob, jid }) => {
                     You must create an Indeed account before continuing to the company website to apply{' '}
                   </Typography>
                   <Divider />
-                  <div>{renderHTML(selectedJob.description)}</div>
+                  <div dangerouslySetInnerHTML={{__html: selectedJob.description}} />
                   <Divider />
                   <Button variant="outlined" sx={{ my: 3 }}>
                     <FlagIcon />

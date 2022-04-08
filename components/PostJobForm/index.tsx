@@ -6,11 +6,11 @@ export const PostJobForm: React.FC = () => {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
   
-    const isStepOptional = (step) => {
+    const isStepOptional = (step:any) => {
       return step === 1;
     };
   
-    const isStepSkipped = (step) => {
+    const isStepSkipped = (step:any) => {
       return skipped.has(step);
     };
   
@@ -51,8 +51,8 @@ export const PostJobForm: React.FC = () => {
     return <><Box sx={{ width: '70%', margin: 'auto', mt: 5 }}>
     <Stepper activeStep={activeStep}>
       {steps.map((label, index) => {
-        const stepProps = {};
-        const labelProps = {};
+        const stepProps:{completed?: any;} = {};
+        const labelProps: {optional?: any} = {};
         if (isStepOptional(index)) {
           labelProps.optional = (
             <Typography variant="caption">Optional</Typography>
