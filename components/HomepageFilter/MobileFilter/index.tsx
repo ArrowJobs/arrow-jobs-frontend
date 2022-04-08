@@ -1,5 +1,5 @@
 import { Global } from '@emotion/react';
-import { Box, Button, CssBaseline, Skeleton, styled, SwipeableDrawer, Typography, useTheme } from '@mui/material';
+import { Box, Button, styled, SwipeableDrawer, Typography, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import * as React from 'react';
 import MobileFilterItem from './MobileFilterItem';

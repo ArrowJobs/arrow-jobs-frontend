@@ -26,7 +26,7 @@ export const PostJobForm: React.FC = () => {
     setInvoiceDetailsState({ ...invoiceDetailsState, [e.target.name]: e.target.value });
   };
 
-  const handleInvoiceDetailsCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+  const handleInvoiceDetailsCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInvoiceDetailsState({ ...invoiceDetailsState, [e.target.name]: e.target.checked });
   };
 

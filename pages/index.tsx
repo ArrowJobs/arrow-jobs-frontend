@@ -1,21 +1,12 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { Layout } from 'components/Layout';
-import router from 'next/dist/client/router';
 import HomepageHeader from 'components/HomepageHeader';
 import HomepageFilter from 'components/HomepageFilter';
-import { Box, Divider, Paper, styled, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Paper, styled, useTheme } from '@mui/material';
 import JobList from 'components/JobList';
-import { useRouter } from 'next/router';
-
-export const handleRouteChange = (e: React.MouseEvent<HTMLElement>, route: string) => {
-  e.preventDefault();
-  router.push(route);
-};
 
 const Index: React.FC = () => {
-  const router = useRouter();
-  const { jid } = router.query;
   const theme = useTheme();
   
   const HomepageHeaderBox = styled(Paper)({
@@ -27,6 +18,7 @@ const Index: React.FC = () => {
       mx: 2,
     }
   }
+  
   return (
     <Layout>
       <div>
@@ -35,7 +27,6 @@ const Index: React.FC = () => {
           <title>Arrow Jobs</title>
         </Head>
         <div>
-          <Typography variant="h2">{jid}</Typography>
           <Box sx={SearchBoxWrapper}>
             <HomepageHeaderBox elevation={1} sx={{ p: 1, shadow: 2, borderRadius: '0 0 0 0' }}>
               <HomepageHeader />
@@ -44,7 +35,7 @@ const Index: React.FC = () => {
           </Box>
 
           <HomepageFilter />
-          <JobList jid={jid} />
+          <JobList />
           <Box sx={{ height: 500 }}></Box>
         </div>
       </div>

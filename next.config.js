@@ -6,6 +6,7 @@ const withImages = require('next-images');
 
 module.exports = withImages({
   nextConfig,
+  typescript: { ignoreBuildErrors: true },
   target: process.env.NODE_ENV !== 'production' ? 'server' : 'serverless',
   dontAutoRegisterSw: true,
   generateSw: false,
@@ -16,6 +17,7 @@ module.exports = withImages({
   },
   images: {
     disableStaticImages: true,
+    domains: ['remoteok.com'],
   },
   webpack(config) {
     config.module.rules.push(

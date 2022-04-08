@@ -1,10 +1,14 @@
 import { Box, Grid, styled, useTheme } from '@mui/material';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import JobListItems from './JobListItems';
-import JobSelected from './JobSelected';
+import JobSelected, { ISelectedJob } from './JobSelected';
+import remoteOkRss from 'feeds/remote-ok.json';
 
-const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
+const JobList = () => {
   const theme = useTheme();
+  const router = useRouter();
+  const { jid } = router.query;
 
   const jobResultsStyles = {
     width: '100%',
@@ -16,7 +20,6 @@ const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
     [theme.breakpoints.up('lg')]: {
       width: 'calc(80%)',
       mx: 'auto',
-      // px: 2,
       display: 'block',
       height: 'calc(100vh - 13%)',
     },
@@ -24,7 +27,7 @@ const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
 
   const jobListStyles = {
     marginTop: 1,
-    paddingTop: 1
+    paddingTop: 1,
   };
 
   const JobSelectedBox = styled(Box)<{ component?: React.ElementType }>(({ theme }) => ({
@@ -35,6 +38,14 @@ const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
     top: 150,
   }));
 
+  const [selectedJob, setSlectedJob] = React.useState<ISelectedJob['selectedJob']>();
+
+  React.useEffect(() => {
+    const index = remoteOkRss.findIndex((job) => job.guid === jid);
+    setSlectedJob(remoteOkRss[index]);
+  }, [jid]);
+
+
   return (
     <>
       <Box sx={jobResultsStyles}>
@@ -44,7 +55,7 @@ const JobList: React.FC<{ jid: string | string[] | undefined }> = ({ jid }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <JobSelectedBox>
-              <JobSelected />
+              <JobSelected selectedJob={selectedJob} jid={jid} />
             </JobSelectedBox>
           </Grid>
         </Grid>

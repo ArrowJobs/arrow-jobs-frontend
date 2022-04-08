@@ -16,7 +16,7 @@ interface MDEditorI {
 
 
 function MDEditor(props: MDEditorI) {
-  const { handleEditorChange, state } = props;
+  const { handleEditorChange } = props;
   const mdParser = new MarkdownIt();
 
   return (

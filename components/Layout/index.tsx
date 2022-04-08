@@ -1,4 +1,4 @@
-import { CssBaseline, AppBar, Toolbar, IconButton, Typography, styled, Box, Button, Fab } from '@mui/material';
+import { CssBaseline, AppBar, Toolbar, IconButton, Typography, styled, Box, Button } from '@mui/material';
 import * as React from 'react';
 import { useTheme } from '@mui/styles';
 import CustomDrawer from './CustomDrawer';
@@ -11,7 +11,15 @@ import { useAtom } from 'jotai';
 import ArrowJobsLogo from '../../public/logoLight.png';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import Image from 'next/image'
 
+const myLoader = ({ src, width, quality }:{src: string; width: number, quality?:number}) => {
+  // const {src, width, quality} = loader;
+  if(width){ 
+    return `http://localhost:3000/${src}?w=${width}&q=${quality || 75}`};
+
+  return `http://localhost:3000/${src}&q=${quality || 75}`
+}
 interface LayoutProps {}
 
 const MainComponent = styled('main')({
@@ -63,7 +71,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '10px' }}>
-            <img src={ArrowJobsLogo} style={{ height: '40px' }} />
+            <Image src={ArrowJobsLogo} loader={myLoader} height={40} width={160}/>
           </Box>
           <Box sx={{ flexGrow: 0, position: 'absolute', right: 10 }}>
             <Button
