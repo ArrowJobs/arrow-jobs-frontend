@@ -1,6 +1,9 @@
-# ARROW JOBS
+# Arrowed Jobs
+
 ## Installations
-`` npm i ``
+
+`npm i`
 
 ## Run in dev mode
-`` npm run dev ``
+
+`npm run dev`
