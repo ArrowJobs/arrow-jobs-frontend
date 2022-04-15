@@ -181,66 +181,66 @@ const CustomDrawer: React.FC<ICustomDrawer> = (props) => {
                   </Tooltip>
                 </ListItemButton>
               </ListItem>
-              <ListItem
-                component="div"
-                disablePadding
-                color="secondary"
-                sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
-              >
-                <ListItemButton sx={{ height: 56 }}>
-                  <ListItemText
-                    primary="About Awesome Job Board"
-                    primaryTypographyProps={{
-                      color: 'primary',
-                      fontWeight: 'medium',
-                      variant: 'body2',
-                    }}
-                  />
-                  <Tooltip title="Post a job">
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        fontSize: 20,
+              <Link href="/about">
+                <ListItem
+                  component="div"
+                  disablePadding
+                  color="secondary"
+                  sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
+                >
+                  <ListItemButton sx={{ height: 56 }}>
+                    <ListItemText
+                      primary="About Arrowed Jobs"
+                      primaryTypographyProps={{
+                        color: 'primary',
+                        fontWeight: 'medium',
+                        variant: 'body2',
                       }}
-                    >
-                      🚐
-                    </Box>
-                  </Tooltip>
-                </ListItemButton>
-              </ListItem>
-              <Link href="/post-job">
-                <a>
-                  <ListItem
-                    component="div"
-                    disablePadding
-                    color="secondary"
-                    sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
-                    // onClick={() => router.push('/post-job')}
-                  >
-                    <ListItemButton sx={{ height: 56 }}>
-                      <ListItemText
-                        primary="Post Job"
-                        primaryTypographyProps={{
-                          color: 'primary',
-                          fontWeight: 'medium',
-                          variant: 'body2',
+                    />
+                    <Tooltip title="Post a job">
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          fontSize: 20,
                         }}
-                      />
-                      <Tooltip title="Post a job">
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            fontSize: 20,
-                          }}
-                        >
-                          🚀
-                        </Box>
-                      </Tooltip>
-                    </ListItemButton>
-                  </ListItem>
-                </a>
+                      >
+                        🚐
+                      </Box>
+                    </Tooltip>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+              <Link href="/post-job">
+                <ListItem
+                  component="div"
+                  disablePadding
+                  color="secondary"
+                  sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
+                  // onClick={() => router.push('/post-job')}
+                >
+                  <ListItemButton sx={{ height: 56 }}>
+                    <ListItemText
+                      primary="Post Job"
+                      primaryTypographyProps={{
+                        color: 'primary',
+                        fontWeight: 'medium',
+                        variant: 'body2',
+                      }}
+                    />
+                    <Tooltip title="Post a job">
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          fontSize: 20,
+                        }}
+                      >
+                        🚀
+                      </Box>
+                    </Tooltip>
+                  </ListItemButton>
+                </ListItem>
               </Link>
             </Box>
             <Box>
