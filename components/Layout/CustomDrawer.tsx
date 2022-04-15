@@ -19,6 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import router from 'next/dist/client/router';
 import Link from 'next/link';
+import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
 
 const drawerWidth = '250px';
 
@@ -155,62 +156,71 @@ const CustomDrawer: React.FC<ICustomDrawer> = (props) => {
             </ListItem>
 
             <Box sx={{ p: 1 }}>
-              <ListItem
-                component="div"
-                disablePadding
-                color="secondary"
-                sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
-              >
-                <ListItemButton sx={{ height: 56 }}>
-                  <ListItemText
-                    primary="Home Page"
-                    primaryTypographyProps={{
-                      color: 'primary',
-                      fontWeight: 'medium',
-                      variant: 'body2',
-                    }}
-                  />
-                  <Tooltip title="Post a job">
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        fontSize: 20,
-                      }}
-                    >
-                      🏠
-                    </Box>
-                  </Tooltip>
-                </ListItemButton>
-              </ListItem>
-              <ListItem
-                component="div"
-                disablePadding
-                color="secondary"
-                sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
-              >
-                <ListItemButton sx={{ height: 56 }}>
-                  <ListItemText
-                    primary="About Awesome Job Board"
-                    primaryTypographyProps={{
-                      color: 'primary',
-                      fontWeight: 'medium',
-                      variant: 'body2',
-                    }}
-                  />
-                  <Tooltip title="Post a job">
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        fontSize: 20,
-                      }}
-                    >
-                      🚐
-                    </Box>
-                  </Tooltip>
-                </ListItemButton>
-              </ListItem>
+              <Link href="/">
+                <a>
+                  <ListItem
+                    component="div"
+                    disablePadding
+                    color="secondary"
+                    sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
+                  >
+                    <ListItemButton sx={{ height: 56 }}>
+                      <ListItemText
+                        primary="Home Page"
+                        primaryTypographyProps={{
+                          color: 'primary',
+                          fontWeight: 'medium',
+                          variant: 'body2',
+                        }}
+                      />
+                      <Tooltip title="Post a job">
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            fontSize: 20,
+                          }}
+                        >
+                          🏠
+                        </Box>
+                      </Tooltip>
+                    </ListItemButton>
+                  </ListItem>
+                </a>
+              </Link>
+              <Link href="/contact">
+                <a>
+                  <ListItem
+                    component="div"
+                    disablePadding
+                    color="secondary"
+                    sx={{ boxShadow: 1, backgroundColor: 'white', mt: 1, mb: 1, borderRadius: 3 }}
+                  >
+                    <ListItemButton sx={{ height: 56 }}>
+                      <ListItemText
+                        primary="Contact"
+                        primaryTypographyProps={{
+                          color: 'primary',
+                          fontWeight: 'medium',
+                          variant: 'body2',
+                        }}
+                      />
+                      <Tooltip title="Post a job">
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            fontSize: 20,
+                          }}
+                        >
+                          <ContactPageOutlinedIcon sx={{ color: '#f25335' }} />
+                        </Box>
+                      </Tooltip>
+                    </ListItemButton>
+                  </ListItem>
+                </a>
+              </Link>
+
               <Link href="/post-job">
                 <a>
                   <ListItem
