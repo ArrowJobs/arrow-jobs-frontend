@@ -139,6 +139,7 @@ const About: React.FC = () => {
           <div>
             <TextField id="outlined-textarea" label="First Name" placeholder="First Name" multiline />
             <TextField id="outlined-textarea" label="Last Name" placeholder="Last Name" multiline />
+            <TextField id="outlined-textarea" label="Email Address" placeholder="email@example.com" multiline />
           </div>
         </Box>
         <div>
