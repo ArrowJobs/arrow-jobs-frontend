@@ -8,11 +8,45 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+
+const queries = [
+  {
+    value: 'job-report',
+    label: 'Report a job',
+  },
+  {
+    value: 'info',
+    label: 'Contact us',
+  },
+  {
+    value: 'bug-report',
+    label: 'Report a bug',
+  },
+  {
+    value: 'pricing-issue',
+    label: 'Need help with pricing',
+  },
+];
+
 const About: React.FC = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
+  };
+
+  const [value, setValue] = React.useState('Controlled');
+
+  const handleChangeSetValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
+  const [query, setQuery] = React.useState('info');
+
+  const handleChangeCurrency = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
   };
   return (
     <Layout>
@@ -77,6 +111,74 @@ const About: React.FC = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
+          <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel5bh-content" id="panel5bh-header">
+              <Typography sx={{ width: '33%', flexShrink: 0 }}>Mock data</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>
+                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros, vitae egestas
+                augue. Duis vel est augue.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </Box>
+
+        <Typography sx={{ p: 2 }} variant="h4">
+          Still need help? Contact us
+        </Typography>
+
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '30ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <div>
+            <TextField id="outlined-textarea" label="First Name" placeholder="First Name" multiline />
+            <TextField id="outlined-textarea" label="Last Name" placeholder="Last Name" multiline />
+          </div>
+        </Box>
+        <div>
+          <TextField
+            id="standard-select-query-native"
+            select
+            label="Query select"
+            value={query}
+            onChange={handleChangeCurrency}
+            SelectProps={{
+              native: true,
+            }}
+            helperText="Please select your query type"
+            variant="outlined"
+            sx={{ m: 1 }}
+            fullWidth
+          >
+            {queries.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </TextField>
+        </div>
+        <div>
+          <TextField
+            id="standard-multiline-static"
+            label="Comments"
+            multiline
+            rows={4}
+            variant="filled"
+            fullWidth
+            sx={{ m: 1 }}
+          />
+        </div>
+
+        <Box textAlign="center" sx={{ m: 1.5 }}>
+          <Button variant="contained" endIcon={<SendIcon />}>
+            Send
+          </Button>
         </Box>
       </Container>
     </Layout>
