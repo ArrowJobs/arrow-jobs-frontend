@@ -167,10 +167,10 @@ const About: React.FC = () => {
         <div>
           <TextField
             id="standard-multiline-static"
-            label="Comments"
+            label="Comments / Feedback"
             multiline
             rows={4}
-            variant="filled"
+            variant="outlined"
             fullWidth
             sx={{ m: 1 }}
           />
