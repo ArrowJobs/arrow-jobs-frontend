@@ -11,15 +11,22 @@ import { useAtom } from 'jotai';
 import ArrowJobsLogo from '../../public/logoLight.png';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import Image from 'next/image'
+import Image from 'next/image';
+import { googlePopupSignin } from 'utils/firestore/authProviders';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppState } from 'utils/store/reducers';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { fireApp } from 'utils/firestore';
+import { IUserState, loginUser } from 'utils/store/reducers/userReducer';
 
-const myLoader = ({ src, width, quality }:{src: string; width: number, quality?:number}) => {
+const myLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
   // const {src, width, quality} = loader;
-  if(width){ 
-    return `http://localhost:3000/${src}?w=${width}&q=${quality || 75}`};
+  if (width) {
+    return `http://localhost:3000/${src}?w=${width}&q=${quality || 75}`;
+  }
 
-  return `http://localhost:3000/${src}&q=${quality || 75}`
-}
+  return `http://localhost:3000/${src}&q=${quality || 75}`;
+};
 interface LayoutProps {}
 
 const MainComponent = styled('main')({
@@ -32,7 +39,32 @@ export const Layout: React.FC<LayoutProps> = (props) => {
   const theme = useTheme();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [hideOnScroll] = useAtom(hideOnScrollWindow);
+  const user = useSelector((state: AppState) => state.userR);
+  const dispatch = useDispatch();
+  const auth = getAuth(fireApp);
 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      // ...
+      user;
+      const tempUser: IUserState = {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        metadata: { createdAt: user.metadata.creationTime, lastSignInTime: user.metadata.lastSignInTime },
+        photoUrl: user.photoURL,
+        providerId: user.providerId,
+        userType: 'Employee',
+      };
+      dispatch(loginUser(tempUser));
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
   const ToolBarStyles = {
     display: 'flex',
     backgroundColor: '#050505',
@@ -52,7 +84,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   return (
@@ -71,7 +103,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ opacity: 0.8, height: 60, padding: 'auto', pt: '10px' }}>
-            <Image src={ArrowJobsLogo} loader={myLoader} height={40} width={160}/>
+            <Image src={ArrowJobsLogo} loader={myLoader} height={40} width={160} />
           </Box>
           <Box sx={{ flexGrow: 0, position: 'absolute', right: 10 }}>
             <Button
@@ -81,6 +113,17 @@ export const Layout: React.FC<LayoutProps> = (props) => {
               endIcon={<div style={{ fontSize: 16 }}>🚀</div>}
             >
               Post Job
+            </Button>
+          </Box>
+          <Box sx={{ flexGrow: 0, position: 'absolute', right: 300 }}>
+            <Button
+              onClick={() => googlePopupSignin()}
+              title="Open settings"
+              color="secondary"
+              variant="contained"
+              endIcon={<div style={{ fontSize: 16 }}>🚀</div>}
+            >
+              Google Signin
             </Button>
           </Box>
         </Toolbar>
@@ -119,7 +162,14 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         }}
       />
       <Box>
-        <Button size="small" color="secondary" variant="contained" aria-label="go-to-top" onClick={() => scrollToTop()} style={{height: '60px', borderRadius: '50%', position: 'fixed', bottom: 20, right: 15}}>
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          aria-label="go-to-top"
+          onClick={() => scrollToTop()}
+          style={{ height: '60px', borderRadius: '50%', position: 'fixed', bottom: 20, right: 15 }}
+        >
           <ArrowUpwardIcon fontSize="medium" />
         </Button>
       </Box>
